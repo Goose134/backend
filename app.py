@@ -18,6 +18,15 @@ def save_text():
         "message": "Данные успешно сохранены"
     })
 
+@app.get("/data")
+def get_data():
+    with open("data.txt", "r", encoding="utf-8") as file:
+        text = file.read()
+
+    return jsonify({
+        "text": text
+    })
+
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000, debug=True)
